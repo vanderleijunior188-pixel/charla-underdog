@@ -144,11 +144,21 @@
   }
   .statement .accent{ color: var(--accent); }
   .statement-q{
-    font-size: clamp(28px, 4vw, 46px); line-height: 1.15; max-width: 780px;
+    font-size: clamp(38px, 7vw, 76px); line-height: 1.1; max-width: 880px;
     font-family: 'Bebas Neue', sans-serif; font-weight: 700; letter-spacing: -0.01em;
-    color: var(--muted-2);
+    color: var(--muted-2); margin: 0 auto; text-align: center;
   }
   .statement-q .accent{ color: var(--accent); }
+
+  /* OPPORTUNITY PULL-QUOTE */
+  .opp-lead{
+    font-size: clamp(20px, 2.6vw, 26px); font-weight: 300; color: var(--muted-2);
+    font-family: 'Outfit', sans-serif;
+  }
+  .opp-big{
+    font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 9vw, 120px); line-height: .96;
+    color: var(--accent); letter-spacing: -0.01em; margin: 6px 0;
+  }
 
   /* UNDERDOG SIGNATURE */
   .underdog-sec{ padding: 170px 0; text-align: center; position: relative; overflow: hidden; }
@@ -217,18 +227,19 @@
     background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
     padding: 20px 20px 26px; display: flex; flex-direction: column; align-items: center;
   }
-  .video-card .video-embed-wrap{ width: 100%; border-radius: 12px; overflow: hidden; }
-  .video-card .video-embed-wrap iframe{ width: 100% !important; }
-  .video-fallback{
-    width: 100%; aspect-ratio: 9/13; border-radius: 12px; background: #0d0d0d;
+  .video-card .video-embed-wrap{ width: 100%; aspect-ratio: 9/16; border-radius: 12px; overflow: hidden; background: #000; }
+  .video-card .video-embed-wrap iframe{ width: 100%; height: 100%; border: 0; display: block; }
+  .video-fallback, .video-placeholder{
+    width: 100%; aspect-ratio: 9/16; border-radius: 12px; background: #0d0d0d;
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
-    border: 1px solid var(--line); padding: 24px;
+    border: 1px dashed var(--line); padding: 24px; text-align: center;
   }
   .video-fallback .ig-icon{ font-size: 30px; }
   .video-fallback a{
     font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
     color: var(--accent); border-bottom: 1px solid rgba(242,68,29,.4); padding-bottom: 4px;
   }
+  .video-placeholder span{ font-size: 13px; color: var(--muted); }
   .video-card .video-label{ margin-top: 16px; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 15px; color: var(--text); }
   @media (max-width: 900px){ .video-grid{ grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; } }
 
@@ -260,6 +271,7 @@
     background: linear-gradient(135deg, var(--accent-deep), #0d0d0d);
   }
   .case-card.text-only span{ font-family: 'Bebas Neue', sans-serif; font-size: 22px; line-height: 1.15; }
+  .case-card.contain img{ object-fit: contain; background: #0a0a0a; }
   @media (max-width: 980px){ .cases-grid{ grid-template-columns: repeat(3, 1fr); } }
   @media (max-width: 700px){ .cases-grid{ grid-template-columns: repeat(2, 1fr); } }
 
@@ -370,7 +382,9 @@
 <section class="sec" id="oportunidade">
   <div class="wrap">
     <p class="eyebrow reveal">Identificação de oportunidade</p>
-    <p class="statement reveal">Recuperar um <span class="accent">ambiente perdido</span> pelos mais apaixonados.</p>
+    <p class="opp-lead reveal">Recuperar um</p>
+    <p class="opp-big reveal">AMBIENTE PERDIDO</p>
+    <p class="opp-lead reveal">pelos mais apaixonados.</p>
   </div>
 </section>
 
@@ -416,13 +430,12 @@
 
 <section class="sec-full" id="videos">
   <div class="wrap">
-    <p class="eyebrow reveal">Melhores momentos Charla</p>
-    <h2 class="h2 reveal" style="margin-bottom:48px;">Vídeos curtos<br>encaixados (1min)</h2>
+    <h2 class="h2 reveal" style="margin-bottom:48px;">Melhores momentos<br>do Charla</h2>
 
     <div class="video-grid">
-      <div class="video-card reveal"><div class="video-embed-wrap"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DbnstQJg-SC/" data-instgrm-version="14" style="margin:0; width:100%; min-width:236px;"></blockquote></div></div>
-      <div class="video-card reveal"><div class="video-embed-wrap"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Dbs2el_AtK2/" data-instgrm-version="14" style="margin:0; width:100%; min-width:236px;"></blockquote></div></div>
-      <div class="video-card reveal"><div class="video-embed-wrap"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DbbL7UzBFnz/" data-instgrm-version="14" style="margin:0; width:100%; min-width:236px;"></blockquote></div></div>
+      <div class="video-card reveal"><div class="video-placeholder"><span class="ig-icon">▶</span><span>Vídeo em breve</span></div></div>
+      <div class="video-card reveal"><div class="video-placeholder"><span class="ig-icon">▶</span><span>Vídeo em breve</span></div></div>
+      <div class="video-card reveal"><div class="video-placeholder"><span class="ig-icon">▶</span><span>Vídeo em breve</span></div></div>
     </div>
   </div>
 </section>
@@ -462,6 +475,7 @@
       <div class="vertical-card reveal"><img src="logo-futebol.png" alt="Charla Futebol"></div>
       <div class="vertical-card reveal"><img src="logo-tour.png" alt="Charla Tour"></div>
       <div class="vertical-card reveal"><img src="logo-mix.png" alt="Charla na Mix"></div>
+      <div class="vertical-card reveal"><img src="logo-premiere.png" alt="Charla no Premiere"></div>
     </div>
   </div>
 </section>
@@ -477,13 +491,11 @@
       <div class="case-card reveal"><img src="case-premiere.jpg" alt="Transmissão Premiere"><span class="case-label">Transmissão Premiere</span></div>
       <div class="case-card reveal"><img src="case-bundesliga-1.jpg" alt="Charla na Bundesliga"><span class="case-label">Bundesliga · Muralha amarela</span></div>
       <div class="case-card reveal"><img src="case-bundesliga-2.jpg" alt="Charla na Oktoberfest"><span class="case-label">Bundesliga · Oktoberfest</span></div>
-      <div class="case-card reveal"><img src="case-bundesliga-3.jpg" alt="Despedida de Xabi Alonso"><span class="case-label">Bundesliga · Despedida Xabi Alonso</span></div>
-      <div class="case-card text-only reveal"><span>Final do Carioca<br><span style="color:var(--accent);">no Maracanã</span></span></div>
       <div class="case-card reveal"><img src="case-allstar.jpg" alt="Charla no NBA All-Star Game"><span class="case-label">NBA All-Star Game</span></div>
-      <div class="case-card reveal"><img src="case-liber-fla.jpg" alt="Final da Libertadores, cobertura Flamengo"><span class="case-label">Final Libertadores · Flamengo</span></div>
-      <div class="case-card reveal"><img src="case-liber-bota.jpg" alt="Final da Libertadores, cobertura Botafogo"><span class="case-label">Final Libertadores · Botafogo</span></div>
+      <div class="case-card contain reveal"><img src="case-liber-fla.jpg" alt="Final da Libertadores, cobertura Flamengo"><span class="case-label">Final Libertadores · Flamengo</span></div>
+      <div class="case-card contain reveal"><img src="case-liber-bota.jpg" alt="Final da Libertadores, cobertura Botafogo"><span class="case-label">Final Libertadores · Botafogo</span></div>
       <div class="case-card reveal"><img src="case-tour.jpg" alt="Charla Tour SP"><span class="case-label">Charla Tour</span></div>
-      <div class="case-card reveal"><img src="case-sab.jpg" alt="O Charla agora é S.A.B"><span class="case-label">O Charla agora é S.A.B</span></div>
+      <div class="case-card contain reveal"><img src="case-sab.jpg" alt="O Charla agora é S.A.B"><span class="case-label">O Charla agora é S.A.B</span></div>
     </div>
   </div>
 </section>
@@ -559,7 +571,7 @@
     <p class="eyebrow reveal">Novidade</p>
     <h2 class="h2 reveal" style="margin-bottom:40px;">O novo espaço do Charla</h2>
     <div class="video-solo reveal">
-      <div class="video-embed-wrap"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reels/DaqZ0lbNmaU/" data-instgrm-version="14" style="margin:0; width:100%; min-width:236px;"></blockquote></div>
+      <div class="video-placeholder"><span class="ig-icon">▶</span><span>Vídeo em breve</span></div>
     </div>
   </div>
 </section>
