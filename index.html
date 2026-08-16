@@ -193,10 +193,18 @@
   .plus-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
   .plus-card{
     background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
-    padding: 34px 24px; text-align: center;
+    padding: 40px 22px; text-align: center;
+    opacity: 0; transform: translateY(36px) scale(.94);
+    transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1);
   }
-  .plus-card .sign{ font-family: 'Bebas Neue', sans-serif; font-size: 34px; color: var(--accent); line-height: 1; margin-bottom: 10px; }
-  .plus-card .lbl{ font-size: 14px; color: var(--muted-2); font-weight: 400; }
+  .plus-card.in{ opacity: 1; transform: translateY(0) scale(1); }
+  .plus-grid .plus-card:nth-child(1){ transition-delay: 0s; }
+  .plus-grid .plus-card:nth-child(2){ transition-delay: .12s; }
+  .plus-grid .plus-card:nth-child(3){ transition-delay: .24s; }
+  .plus-grid .plus-card:nth-child(4){ transition-delay: .36s; }
+  @media (prefers-reduced-motion: reduce){ .plus-card{ transition: none; } }
+  .plus-card .sign{ font-family: 'Bebas Neue', sans-serif; font-size: 44px; color: var(--accent); line-height: 1; margin-bottom: 12px; }
+  .plus-card .lbl{ font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: .01em; color: var(--text); font-weight: 700; }
   @media (max-width: 900px){ .plus-grid{ grid-template-columns: 1fr 1fr; } }
   @media (max-width: 520px){ .plus-grid{ grid-template-columns: 1fr; } }
 
@@ -570,7 +578,7 @@
     <p class="eyebrow reveal">Novidade</p>
     <h2 class="h2 reveal" style="margin-bottom:40px;">O novo espaço do Charla</h2>
     <div class="video-solo reveal">
-      <div class="video-embed-wrap"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reels/DaqZ0lbNmaU/" data-instgrm-version="14" style="margin:0; width:100%; min-width:236px;"></blockquote></div>
+      <div class="video-placeholder"><span class="ig-icon">▶</span><span>Vídeo em breve</span></div>
     </div>
   </div>
 </section>
@@ -612,7 +620,6 @@
     els.forEach(function(el){ el.classList.add('in'); playLazyVideo(el); });
   }
 </script>
-<script async src="//www.instagram.com/embed.js"></script>
 
 </body>
 </html>
