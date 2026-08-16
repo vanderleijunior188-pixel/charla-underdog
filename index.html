@@ -588,10 +588,6 @@
 </section>
 
 <script>
-  function playLazyVideo(el){
-    var ifr = el.querySelector('iframe[data-src]');
-    if(ifr){ ifr.src = ifr.dataset.src; }
-  }
   var els = document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(entries){
@@ -600,17 +596,11 @@
       });
     }, { threshold: 0.15 });
     els.forEach(function(el){ io.observe(el); });
-
-    var videoEls = Array.prototype.filter.call(els, function(el){ return el.querySelector('iframe[data-src]'); });
-    var vio = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){ playLazyVideo(e.target); vio.unobserve(e.target); }
-      });
-    }, { rootMargin: '1400px 0px 1400px 0px' });
-    videoEls.forEach(function(el){ vio.observe(el); });
   } else {
-    els.forEach(function(el){ el.classList.add('in'); playLazyVideo(el); });
+    els.forEach(function(el){ el.classList.add('in'); });
   }
+
+  document.querySelectorAll('iframe[data-src]').forEach(function(ifr){ ifr.src = ifr.dataset.src; });
 </script>
 
 </body>
