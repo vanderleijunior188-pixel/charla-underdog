@@ -222,7 +222,7 @@
   @media (max-width: 860px){ .concept-grid{ grid-template-columns: 1fr; } }
 
   /* VIDEO EMBEDS */
-  .video-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .video-grid{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
   .video-card{
     background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
     padding: 20px 20px 26px; display: flex; flex-direction: column; align-items: center;
@@ -241,7 +241,8 @@
   }
   .video-placeholder span{ font-size: 13px; color: var(--muted); }
   .video-card .video-label{ margin-top: 16px; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 15px; color: var(--text); }
-  @media (max-width: 900px){ .video-grid{ grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; } }
+  @media (max-width: 1100px){ .video-grid{ grid-template-columns: repeat(2, 1fr); max-width: 640px; margin: 0 auto; } }
+  @media (max-width: 560px){ .video-grid{ grid-template-columns: 1fr; max-width: 380px; } }
 
   .video-solo{ max-width: 400px; margin: 0 auto; }
 
@@ -433,9 +434,10 @@
     <h2 class="h2 reveal" style="margin-bottom:48px;">Melhores momentos<br>do Charla</h2>
 
     <div class="video-grid">
-      <div class="video-card reveal"><div class="video-placeholder"><span class="ig-icon">▶</span><span>Vídeo em breve</span></div></div>
-      <div class="video-card reveal"><div class="video-placeholder"><span class="ig-icon">▶</span><span>Vídeo em breve</span></div></div>
-      <div class="video-card reveal"><div class="video-placeholder"><span class="ig-icon">▶</span><span>Vídeo em breve</span></div></div>
+      <div class="video-card reveal"><div class="video-embed-wrap"><iframe data-src="https://www.youtube.com/embed/KQMbdeu0wg0?autoplay=1&mute=1&loop=1&playlist=KQMbdeu0wg0&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Charla"></iframe></div></div>
+      <div class="video-card reveal"><div class="video-embed-wrap"><iframe data-src="https://www.youtube.com/embed/dUJs-0gAEWM?autoplay=1&mute=1&loop=1&playlist=dUJs-0gAEWM&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Charla"></iframe></div></div>
+      <div class="video-card reveal"><div class="video-embed-wrap"><iframe data-src="https://www.youtube.com/embed/6arg639V1_E?autoplay=1&mute=1&loop=1&playlist=6arg639V1_E&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Charla"></iframe></div></div>
+      <div class="video-card reveal"><div class="video-embed-wrap"><iframe data-src="https://www.youtube.com/embed/BI22NxSJRKU?autoplay=1&mute=1&loop=1&playlist=BI22NxSJRKU&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Charla"></iframe></div></div>
     </div>
   </div>
 </section>
@@ -597,16 +599,20 @@
 </section>
 
 <script>
+  function playLazyVideo(el){
+    var ifr = el.querySelector('iframe[data-src]');
+    if(ifr){ ifr.src = ifr.dataset.src; }
+  }
   var els = document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+        if(e.isIntersecting){ e.target.classList.add('in'); playLazyVideo(e.target); io.unobserve(e.target); }
       });
     }, { threshold: 0.15 });
     els.forEach(function(el){ io.observe(el); });
   } else {
-    els.forEach(function(el){ el.classList.add('in'); });
+    els.forEach(function(el){ el.classList.add('in'); playLazyVideo(el); });
   }
 </script>
 
